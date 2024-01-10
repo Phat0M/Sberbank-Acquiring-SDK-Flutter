@@ -34,8 +34,8 @@ Map<String, dynamic> _$ApplePayRecurrentResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('success', instance.success);
   writeNotNull('data', instance.data);
   writeNotNull('error', instance.error);

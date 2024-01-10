@@ -179,4 +179,24 @@ class SberbankAcquiring {
           CreateBindingNoPaymentResponse.fromJson(json),
     );
   }
+
+  /// {@macro payment_order_binding_request}
+  Future<PaymentOrderBindingResponse> paymentOrderBinding(
+    PaymentOrderBindingRequest request,
+  ) {
+    return _network(
+      request,
+      (Map<String, dynamic> json) => PaymentOrderBindingResponse.fromJson(json),
+    );
+  }
+
+  /// {@macro recurrent_payment_request}
+  Future<RecurrentPaymentResponse> recurrentPayment(
+    RecurrentPaymentRequest request,
+  ) {
+    return _network(
+      request,
+      (Map<String, dynamic> json) => RecurrentPaymentResponse.fromJson(json),
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sberbank_acquiring/src/constants.dart';
 
 import '../base/acquiring_response.dart';
 
@@ -11,10 +12,9 @@ part 'reverse_response.g.dart';
 class ReverseResponse extends AcquiringResponse {
   /// {@macro reverse_response}
   ReverseResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -28,5 +28,15 @@ class ReverseResponse extends AcquiringResponse {
   @override
   Map<String, Object?> get equals => <String, Object?>{
         ...super.equals,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 }

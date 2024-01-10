@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../constants.dart';
-import '../common/error_info.dart';
-import '../common/data.dart';
 import '../base/acquiring_response.dart';
+import '../common/data.dart';
+import '../common/error_info.dart';
 
 part 'google_pay_response.g.dart';
 
@@ -14,13 +14,12 @@ part 'google_pay_response.g.dart';
 class GooglePayResponse extends AcquiringResponse {
   /// {@macro google_pay_response}
   GooglePayResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.success,
     this.data,
     this.error,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -37,7 +36,17 @@ class GooglePayResponse extends AcquiringResponse {
         JsonKeys.success: success,
         JsonKeys.data: data,
         JsonKeys.error: error,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Указывает на успешность запроса. Доступны следующие значения:
   /// - `true` (истина) - запрос обработан успешно;

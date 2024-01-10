@@ -26,8 +26,8 @@ Map<String, dynamic> _$VerifyEnrollmentResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('isEnrolled', _$EnrolledEnumMap[instance.isEnrolled]);
   writeNotNull('emitterName', instance.emitterName);
   writeNotNull('emitterCountryCode', instance.emitterCountryCode);

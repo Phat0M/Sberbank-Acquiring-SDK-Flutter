@@ -22,7 +22,7 @@ part 'get_order_status_extended_response.g.dart';
 class GetOrderStatusExtendedResponse extends AcquiringResponse {
   /// {@macro get_order_status_extended_response}
   GetOrderStatusExtendedResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.orderNumber,
     this.orderStatus,
@@ -49,7 +49,6 @@ class GetOrderStatusExtendedResponse extends AcquiringResponse {
     this.payerData,
     this.refunds,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -87,7 +86,17 @@ class GetOrderStatusExtendedResponse extends AcquiringResponse {
         JsonKeys.bindingInfo: bindingInfo,
         JsonKeys.payerData: payerData,
         JsonKeys.refunds: refunds,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Номер (идентификатор) заказа в системе магазина, уникален для каждого магазина в пределах системы.
   /// Если номер заказа генерируется на стороне платёжного шлюза, этот параметр передавать необязательно.

@@ -18,3 +18,5 @@ export 'register/register.dart';
 export 'reverse/reverse.dart';
 export 'un_bind_card/un_bind_card.dart';
 export 'verify_enrollment/verify_enrollment.dart';
+export 'payment_order_binding/payment_order_binding.dart';
+export 'recurrent_payment/recurrent_payment.dart';

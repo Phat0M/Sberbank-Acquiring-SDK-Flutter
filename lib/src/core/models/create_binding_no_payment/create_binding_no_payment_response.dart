@@ -12,7 +12,7 @@ part 'create_binding_no_payment_response.g.dart';
 class CreateBindingNoPaymentResponse extends AcquiringResponse {
   /// {@macro create_binding_no_payment_response}
   CreateBindingNoPaymentResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.bindingId,
     this.clientId,
@@ -20,7 +20,6 @@ class CreateBindingNoPaymentResponse extends AcquiringResponse {
     this.expiryDate,
     this.maskedPan,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -39,7 +38,17 @@ class CreateBindingNoPaymentResponse extends AcquiringResponse {
         JsonKeys.cardholderName: cardholderName,
         JsonKeys.expiryDate: expiryDate,
         JsonKeys.maskedPan: maskedPan,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Идентификатор связки созданной при оплате заказа или использованной для оплаты.
   /// Присутствует только если магазину разрешено создание связок.

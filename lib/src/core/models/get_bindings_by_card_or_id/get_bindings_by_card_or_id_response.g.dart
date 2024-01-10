@@ -26,8 +26,8 @@ Map<String, dynamic> _$GetBindingsByCardOrIdResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('bindings', instance.bindings);
   return val;
 }

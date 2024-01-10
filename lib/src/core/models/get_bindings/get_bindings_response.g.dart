@@ -24,8 +24,8 @@ Map<String, dynamic> _$GetBindingsResponseToJson(GetBindingsResponse instance) {
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('bindings', instance.bindings);
   return val;
 }

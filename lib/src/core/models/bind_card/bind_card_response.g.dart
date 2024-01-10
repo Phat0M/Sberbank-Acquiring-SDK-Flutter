@@ -21,7 +21,7 @@ Map<String, dynamic> _$BindCardResponseToJson(BindCardResponse instance) {
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   return val;
 }

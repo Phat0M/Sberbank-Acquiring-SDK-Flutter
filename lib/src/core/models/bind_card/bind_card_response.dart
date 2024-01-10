@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sberbank_acquiring/src/constants.dart';
 
 import '../base/acquiring_response.dart';
 
@@ -11,16 +12,24 @@ part 'bind_card_response.g.dart';
 class BindCardResponse extends AcquiringResponse {
   /// {@macro bind_card_response}
   BindCardResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
   /// {@macro fromJson}
   factory BindCardResponse.fromJson(Map<String, dynamic> json) =>
       _$BindCardResponseFromJson(json);
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   @override
   Map<String, dynamic> toJson() => _$BindCardResponseToJson(this);

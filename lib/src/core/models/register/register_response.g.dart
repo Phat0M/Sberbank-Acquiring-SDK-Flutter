@@ -27,8 +27,8 @@ Map<String, dynamic> _$RegisterResponseToJson(RegisterResponse instance) {
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('orderId', instance.orderId);
   writeNotNull('formUrl', instance.formUrl);
   writeNotNull('externalParams', instance.externalParams);

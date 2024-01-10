@@ -30,8 +30,8 @@ Map<String, dynamic> _$GetReceiptStatusResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('orderNumber', instance.orderNumber);
   writeNotNull('orderId', instance.orderId);
   writeNotNull('daemonCode', instance.daemonCode);

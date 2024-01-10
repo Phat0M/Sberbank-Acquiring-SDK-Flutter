@@ -14,7 +14,7 @@ part 'get_receipt_status_response.g.dart';
 class GetReceiptStatusResponse extends AcquiringResponse {
   /// {@macro get_receipt_status_response}
   GetReceiptStatusResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.orderNumber,
     this.orderId,
@@ -22,7 +22,6 @@ class GetReceiptStatusResponse extends AcquiringResponse {
     this.ecrRegistrationNumber,
     this.receipt,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -41,7 +40,17 @@ class GetReceiptStatusResponse extends AcquiringResponse {
         JsonKeys.daemonCode: daemonCode,
         JsonKeys.ecrRegistrationNumber: ecrRegistrationNumber,
         JsonKeys.receipt: receipt,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Номер (идентификатор) заказа в системе магазина, уникален для каждого магазина в пределах системы.
   @JsonKey(name: JsonKeys.orderNumber)

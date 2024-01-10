@@ -34,7 +34,7 @@ class NetworkClient {
 
       proxyHeaders = <String, String>{
         ...?config.globalHeaders,
-        ...?setting?.headers
+        ...?setting?.headers,
       };
 
       final String? path = setting?.path;

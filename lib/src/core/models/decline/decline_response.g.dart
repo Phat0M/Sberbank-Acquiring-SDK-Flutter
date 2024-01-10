@@ -22,8 +22,8 @@ Map<String, dynamic> _$DeclineResponseToJson(DeclineResponse instance) {
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('userMessage', instance.userMessage);
   return val;
 }

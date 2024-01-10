@@ -36,6 +36,8 @@ abstract final class ApiMethods {
   static const String getBindingsByCardOrId = 'rest/getBindingsByCardOrId.do';
   static const String extendBinding = 'rest/extendBinding.do';
   static const String createBindingNoPayment = 'rest/createBindingNoPayment.do';
+  static const String paymentOrderBinding = 'rest/paymentOrderBinding.do';
+  static const String recurrentPayment = 'recurrentPayment.do';
 }
 
 abstract final class JsonValues {
@@ -251,4 +253,9 @@ abstract final class JsonKeys {
   static const String billingPostalCode = 'billingPostalCode';
   static const String billingState = 'billingState';
   static const String protocolVersion = 'protocolVersion';
+  static const String mdOrder = 'mdOrder';
+  static const String cvc = 'cvc';
+  static const String redirect = 'redirect';
+  static const String info = 'info';
+  static const String describtion = 'describtion';
 }

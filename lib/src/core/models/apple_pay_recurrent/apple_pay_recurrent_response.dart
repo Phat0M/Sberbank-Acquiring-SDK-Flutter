@@ -15,14 +15,13 @@ part 'apple_pay_recurrent_response.g.dart';
 class ApplePayRecurrentResponse extends AcquiringResponse {
   /// {@macro apple_pay_recurrent_response}
   ApplePayRecurrentResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.success,
     this.data,
     this.error,
     this.orderStatus,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -40,7 +39,17 @@ class ApplePayRecurrentResponse extends AcquiringResponse {
         JsonKeys.data: data,
         JsonKeys.error: error,
         JsonKeys.orderStatus: orderStatus,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Указывает на успешность запроса. Доступны следующие значения:
   /// - `true` (истина) - запрос обработан успешно;

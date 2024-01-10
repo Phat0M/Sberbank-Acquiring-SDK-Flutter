@@ -28,8 +28,8 @@ Map<String, dynamic> _$CreateBindingNoPaymentResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('bindingId', instance.bindingId);
   writeNotNull('clientId', instance.clientId);
   writeNotNull('cardholderName', instance.cardholderName);

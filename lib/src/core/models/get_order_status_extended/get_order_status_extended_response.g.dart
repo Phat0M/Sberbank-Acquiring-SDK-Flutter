@@ -67,8 +67,8 @@ Map<String, dynamic> _$GetOrderStatusExtendedResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('orderNumber', instance.orderNumber);
   writeNotNull('orderStatus', _$OrderStatusEnumMap[instance.orderStatus]);
   writeNotNull('actionCode', instance.actionCode);

@@ -21,7 +21,7 @@ Map<String, dynamic> _$ReverseResponseToJson(ReverseResponse instance) {
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   return val;
 }

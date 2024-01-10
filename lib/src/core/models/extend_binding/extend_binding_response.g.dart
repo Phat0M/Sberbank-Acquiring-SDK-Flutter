@@ -23,7 +23,7 @@ Map<String, dynamic> _$ExtendBindingResponseToJson(
     }
   }
 
-  writeNotNull('errorCode', instance.errorCode);
   writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('errorCode', instance.errorCode);
   return val;
 }

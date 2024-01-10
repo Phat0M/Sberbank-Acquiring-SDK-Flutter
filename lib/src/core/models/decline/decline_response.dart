@@ -12,11 +12,10 @@ part 'decline_response.g.dart';
 class DeclineResponse extends AcquiringResponse {
   /// {@macro decline_response}
   DeclineResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.userMessage,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -31,7 +30,17 @@ class DeclineResponse extends AcquiringResponse {
   Map<String, Object?> get equals => <String, Object?>{
         ...super.equals,
         JsonKeys.userMessage: userMessage,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Сообщению пользователю с описанием кода результата.
   @JsonKey(name: JsonKeys.userMessage)

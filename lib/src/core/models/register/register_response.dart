@@ -13,13 +13,12 @@ part 'register_response.g.dart';
 class RegisterResponse extends AcquiringResponse {
   /// {@macro register_response}
   RegisterResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.orderId,
     this.formUrl,
     this.externalParams,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -36,7 +35,17 @@ class RegisterResponse extends AcquiringResponse {
         JsonKeys.orderId: orderId,
         JsonKeys.formUrl: formUrl,
         JsonKeys.externalParams: externalParams,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// Номер заказа в платежной системе. Уникален в пределах системы.
   /// Отсутствует если регистрация заказа на удалась по причине ошибки, детализированной в ErrorCode.

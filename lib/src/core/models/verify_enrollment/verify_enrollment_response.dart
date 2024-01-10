@@ -13,13 +13,12 @@ part 'verify_enrollment_response.g.dart';
 class VerifyEnrollmentResponse extends AcquiringResponse {
   /// {@macro verify_enrollment_response}
   VerifyEnrollmentResponse({
-    String? errorCode,
+    this.errorCode,
     String? errorMessage,
     this.isEnrolled,
     this.emitterName,
     this.emitterCountryCode,
   }) : super(
-          errorCode: errorCode,
           errorMessage: errorMessage,
         );
 
@@ -36,7 +35,17 @@ class VerifyEnrollmentResponse extends AcquiringResponse {
         JsonKeys.isEnrolled: isEnrolled,
         JsonKeys.emitterName: emitterName,
         JsonKeys.emitterCountryCode: emitterCountryCode,
+        JsonKeys.errorCode: errorCode,
       };
+
+  @override
+  bool get hasError => errorCode != null && errorCode != '0';
+
+  /// Код ошибки
+  ///
+  /// Если ошибки не произошло, передается значение «0»
+  @JsonKey(name: JsonKeys.errorCode)
+  final String? errorCode;
 
   /// {@macro enrolled}
   @JsonKey(name: JsonKeys.isEnrolled)
